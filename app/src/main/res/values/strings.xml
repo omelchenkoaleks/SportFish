@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">GPS_sportfish</string>
+
+    <!--Button-->
+    <string name="start_service">START service</string>
+    <string name="stop_service">STOP service</string>
+
+    <!--TextView-->
+    <string name="coordinates">your coordinates:</string>
+
 </resources>
