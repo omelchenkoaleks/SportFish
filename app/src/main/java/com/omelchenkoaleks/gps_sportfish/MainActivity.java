@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GPS_Service.class);
-                startService(intent);
+                stopService(intent);
             }
         });
     }

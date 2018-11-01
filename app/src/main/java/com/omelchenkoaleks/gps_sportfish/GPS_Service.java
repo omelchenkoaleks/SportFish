@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 public class GPS_Service extends Service {
 
@@ -34,6 +35,10 @@ public class GPS_Service extends Service {
                 intent.putExtra("coordinates", location.getLongitude()
                         + " " + location.getLatitude());
                 sendBroadcast(intent);
+
+                Toast.makeText(getBaseContext(), "New location latitude [" +
+                        location.getLatitude() +"] longitude [" + location.getLongitude() + "]",
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -54,6 +59,12 @@ public class GPS_Service extends Service {
             }
         };
 
+        /**
+         * Служба системного уровня. Используем служебный метод для получения
+         * службы LocationManager. В параметрах передаем имя нужной службы.
+         * Эта служба предоставит детали местоположения за счет использования
+         * поставщиков местоложения.
+         */
         locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 0, locationListener);
